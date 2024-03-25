@@ -12,7 +12,7 @@ Yellow and green taxi trip records include fields capturing pick-up and drop-off
 
 For-Hire Vehicle (“FHV”) trip records include fields capturing the dispatching base license number and the pick-up date, time, and taxi zone location ID (shape file below). These records are generated from the FHV Trip Record submissions made by bases. Note: The TLC publishes base trip record data as submitted by the bases, and we cannot guarantee or confirm their accuracy or completeness. Therefore, this may not represent the total amount of trips dispatched by all TLC-licensed bases. The TLC performs routine reviews of the records and takes enforcement actions when necessary to ensure, to the extent possible, complete and accurate information.
 
-### Data Type
+### Data Dictionary
 
 | Field Name             | Description                                                                                                 |
 |------------------------|-------------------------------------------------------------------------------------------------------------|
@@ -52,3 +52,4 @@ For-Hire Vehicle (“FHV”) trip records include fields capturing the dispatchi
 | Total_amount          | The total amount charged to passengers. Does not include cash tips.                                          |
 | Congestion_Surcharge  | Total amount collected in the trip for NYS congestion surcharge.                                             |
 | Airport_fee           | $1.25 for pick up only at LaGuardia and John F. Kennedy Airports.                                            |
+

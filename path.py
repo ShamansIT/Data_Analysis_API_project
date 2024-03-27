@@ -4,8 +4,6 @@ data_parquet = 'D:\IT\Python\Data_Analysis_API_project\data\parquet'
 data_csv = 'D:\IT\Python\Data_Analysis_API_project\data\csv'
 
 # Yellow Taxi Trip Data
-
-
 YTTD2009 = 'https://data.cityofnewyork.us/resource/f9tw-8p66.csv'
 YTTD2010 = 'https://data.cityofnewyork.us/resource/74wj-s5ij.csv'
 YTTD2011 = 'https://data.cityofnewyork.us/resource/uwyp-dntv.csv'

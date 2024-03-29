@@ -1,3 +1,28 @@
+"""
+Converts Parquet files to CSV files.
+
+This script takes an input directory containing Parquet files and converts them to CSV format,
+writing the resulting CSV files to the specified output directory.
+
+Parameters:
+- input_dir: str, the directory containing Parquet files.
+- output_dir: str, the directory where the resulting CSV files will be saved.
+
+Dependencies:
+- path: a module providing paths to data directories.
+- os: provides operating system interfaces.
+- glob: provides a Unix style pathname pattern expansion.
+- pandas (pd): provides data manipulation capabilities, including reading and writing Parquet files.
+
+Returns:
+None
+
+Example:
+parquet_to_csv(path.data_parquet, path.data_csv)
+
+Author: Serhii Spitsyn
+"""
+
 import path
 import os
 import glob

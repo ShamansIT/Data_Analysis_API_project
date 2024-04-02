@@ -97,7 +97,7 @@ if data:
         if col in df.columns:
             df.rename(columns={col: 'ratecodeid'}, inplace=True)
 
-    print(df.info())
+#    print(df.info())
 
     # Delete the column 'store_and_fwd_flag'
     column_to_drop = 'store_and_fwd_flag'
@@ -225,6 +225,7 @@ if data:
         "data" : data_base_name,
         "year" : year_input,
     }
+
 
     # Plotting the distribution of trip distances
     plot_output.trip_distance_plot(trip_distance_dim, plot_data)  

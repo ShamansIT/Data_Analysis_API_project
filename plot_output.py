@@ -21,7 +21,6 @@ None
 
 Author: Serhii Spitsyn
 """
-
 import matplotlib.pyplot as plt
 
 def trip_distance_plot(trip_distance_dim, plot_data):  
@@ -35,8 +34,7 @@ def trip_distance_plot(trip_distance_dim, plot_data):
         plt.grid(True)
         plt.show()
     else:
-        print(f"No data available to plot in Distribution of Trip Distances for {plot_data["plot"][plot_data["data"]]} in {plot_data["year"]}")
-
+        print(f"No data available to plot in Distribution of Trip Distances for {plot_data['plot'][plot_data['data']]} in {plot_data['year']}")
 
 def passenger_count_plot(passenger_count_dim, plot_data):
     # Plotting the distribution of passenger counts
@@ -51,8 +49,7 @@ def passenger_count_plot(passenger_count_dim, plot_data):
         plt.grid(axis='y')
         plt.show()
     else:
-        print(f"No data available to plot in Distribution of Passenger Counts for {plot_data["plot"][plot_data["data"]]} in {plot_data["year"]}")
-
+        print(f"No data available to plot in Distribution of Passenger Counts for {plot_data['plot'][plot_data['data']]} in {plot_data['year']}")
 
 def payment_counts_plot(payment_type_dim, plot_data):
     # Plotting a pie chart for payment types
@@ -77,7 +74,7 @@ def fare_amount_plot(fact_table, plot_data):
         plt.grid(True)
         plt.show()
     else:
-        print(f"No data available to plot in Distribution of Fare Amounts for {plot_data["plot"][plot_data["data"]]} in {plot_data["year"]}")
+        print(f"No data available to plot in Distribution of Fare Amounts for {plot_data['plot'][plot_data['data']]} in {plot_data['year']}")
 
 def trip_Distance_vs_total_amount(fact_table, plot_data):
     # Scatter plot for trip distances vs. total amounts
@@ -90,7 +87,7 @@ def trip_Distance_vs_total_amount(fact_table, plot_data):
         plt.grid(True)
         plt.show()
     else:
-        print(f"No data available to plot in Distribution of Fare Amounts for {plot_data["plot"][plot_data["data"]]} in {plot_data["year"]}")
+        print(f"No data available to plot in Distribution of Fare Amounts for {plot_data['plot'][plot_data['data']]} in {plot_data['year']}")
 
 def distance_distribution(trip_distance_dim, plot_data):
     # Visualize trip distance distribution
@@ -102,8 +99,7 @@ def distance_distribution(trip_distance_dim, plot_data):
         plt.grid(True)
         plt.show()
     else:
-        print(f"No data available to plot in Trip Distance Distribution for {plot_data["plot"][plot_data["data"]]} in {plot_data["year"]}")
-
+        print(f"No data available to plot in Trip Distance Distribution for {plot_data['plot'][plot_data['data']]} in {plot_data['year']}")
 
 def amount_distribution(fact_table, plot_data):
     # Visualize fare amount distribution
@@ -115,4 +111,4 @@ def amount_distribution(fact_table, plot_data):
         plt.grid(True)
         plt.show()
     else:
-        print(f"No data available to plot in Fare Amount Distribution for {plot_data["plot"][plot_data["data"]]} in {plot_data["year"]}")  
+        print(f"No data available to plot in Fare Amount Distribution for {plot_data['plot'][plot_data['data']]} in {plot_data['year']}")  

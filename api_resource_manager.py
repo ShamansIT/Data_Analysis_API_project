@@ -1,3 +1,9 @@
+"""
+Class generatre connection reference api.
+        
+Author: Serhii Spitsyn
+"""
+
 class ApiResourceManager:
     def __init__(self):
         self.base_urls = {

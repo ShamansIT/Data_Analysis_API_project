@@ -1,3 +1,11 @@
+"""_summary_
+
+    Returns:
+        _type_: _description_
+        
+Author: Serhii Spitsyn
+"""
+
 import requests
 import pyodbc
 

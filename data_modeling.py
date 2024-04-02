@@ -1,9 +1,15 @@
+"""_summary_
+
+    Returns:
+        _type_: _description_
+        
+Author: Serhii Spitsyn
+"""
 import pandas as pd
 import requests
 from io import StringIO 
 from csv_data_dao import CVSDataDAO
 from api_resource_manager import ApiResourceManager
-
 
 #check data model with sample file
 #df = pd.read_csv("sample.csv")
@@ -17,7 +23,7 @@ api_url = api_manager.api_resource(base_name+year)
 # Fetch data from API
 try:
     response = requests.get(api_url)
-    response.raise_for_status()  # Raise an exception for 4xx/5xx status codes
+    response.raise_for_status() 
     data = response.text
 except requests.exceptions.RequestException as e:
     print(f"Error fetching data from API: {e}")
@@ -74,6 +80,7 @@ if data:
         5:"Negotiated fare",
         6:"Group ride"
     }
+
     rate_code_dim = df[['ratecodeid']].reset_index(drop=True)
     rate_code_dim['rate_code_id'] = rate_code_dim.index
     rate_code_dim['rate_code_name'] = rate_code_dim['ratecodeid'].map(rate_code_type)
@@ -101,7 +108,7 @@ if data:
     payment_type_dim = payment_type_dim[['payment_type_id','payment_type','payment_type_name']]
   
 #    print(payment_type_dim.info())
-#    print(dropoff_location_dim.info())
+#    print(dropoff_location_dim)
 #    print(rate_code_dim.info())
 #    print(trip_distance_dim.info())
 #    print(passenger_count_dim.info())
@@ -120,19 +127,47 @@ if data:
                 'payment_type_id', 'fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount',
                 'improvement_surcharge', 'total_amount']]
     
-#    print(fact_table.info())
-  
-    # Create a DAO instance
-    csv_dao = CVSDataDAO(api_url)
-    
-    # Export DataFrame to SQL Server
-    #TODO
-    """server = 'your_server'
-    database = 'your_database'
-    table = 'your_table'
+    # Analyze passenger count distribution
+    passenger_count_distribution = passenger_count_dim['passenger_count'].value_counts()
+    print("Passenger Count Distribution:")
+    print(passenger_count_distribution)
 
-    csv_dao.export_to_sql_server(df, server, database, table)"""
+    # Analyze trip distance distribution
+    trip_distance_distribution = trip_distance_dim['trip_distance'].describe()
+    print("\nTrip Distance Statistics:")
+    print(trip_distance_distribution)
+
+    # Analyze rate code distribution
+    rate_code_distribution = rate_code_dim['rate_code_name'].value_counts()
+    print("\nRate Code Distribution:")
+    print(rate_code_distribution)
+
+    # Analyze payment type distribution
+    payment_type_distribution = payment_type_dim['payment_type_name'].value_counts()
+    print("\nPayment Type Distribution:")
+    print(payment_type_distribution)
+
+    # Analyze fare amount statistics
+    fare_amount_stats = fact_table['fare_amount'].describe()
+    print("\nFare Amount Statistics:")
+    print(fare_amount_stats)
+
+    # Visualize trip distance distribution
+    import matplotlib.pyplot as plt
+    plt.hist(trip_distance_dim['trip_distance'], bins=20, color='skyblue', edgecolor='black')
+    plt.title('Trip Distance Distribution')
+    plt.xlabel('Trip Distance')
+    plt.ylabel('Frequency')
+    plt.grid(True)
+    plt.show()
+
+    # Visualize fare amount distribution
+    plt.hist(fact_table['fare_amount'], bins=20, color='lightgreen', edgecolor='black')
+    plt.title('Fare Amount Distribution')
+    plt.xlabel('Fare Amount')
+    plt.ylabel('Frequency')
+    plt.grid(True)
+    plt.show()
+    
 else:
     print("No data fetched from API. Exiting...")
-
-#print(fact_table.head())

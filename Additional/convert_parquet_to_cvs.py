@@ -23,7 +23,7 @@ parquet_to_csv(path.data_parquet, path.data_csv)
 Author: Serhii Spitsyn
 """
 
-import path
+import Additional.path as path
 import os
 import glob
 import pandas as pd

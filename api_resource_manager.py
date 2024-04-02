@@ -1,5 +1,21 @@
 """
-Class generatre connection reference api.
+API Resource Manager.
+
+This class manages the API endpoints for fetching taxi trip data based on taxi group (Yellow or Green Taxi)
+and the year of the data.
+
+Attributes:
+- base_urls: dict, a dictionary containing base URLs for Yellow and Green Taxi data for different years.
+
+Methods:
+- api_resource(base_name): Returns the API URL for the specified base name, which represents a combination
+                            of taxi group and year.
+
+Dependencies:
+- None
+
+Returns:
+- api_url: str, the API URL corresponding to the specified base name.
         
 Author: Serhii Spitsyn
 """

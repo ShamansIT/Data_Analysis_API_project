@@ -1,8 +1,22 @@
 """
-Data Analysis and Visualization for Taxi Trips
+Taxi Trip Data Visualization and Processing.
 
-This script fetches taxi trip data from an API, processes it, and visualizes various aspects such as trip distances,
-passenger counts, payment types, fares, and their distributions.
+This script interacts with API to fetch taxi trip data, processes it into structured dataframes,
+and visualizes various aspects of the data including trip distances, passenger counts, payment types,
+fare amounts, and relationships between trip distance and total amount.
+
+Parameters:
+- None
+
+Dependencies:
+- pandas: Provides data manipulation capabilities.
+- requests: Allows interaction with APIs.
+- io.StringIO: Provides string-like file objects.
+- ApiResourceManager: Custom module for managing API resources.
+- plot_output: Custom module for generating plots.
+
+Returns:
+None
 
 Author: Serhii Spitsyn
 """
@@ -10,7 +24,7 @@ import pandas as pd
 import requests
 from io import StringIO 
 from api_resource_manager import ApiResourceManager
-import matplotlib.pyplot as plt
+import plot_output
 
 # Check input for base_name (taxi group)
 while True:
@@ -42,7 +56,6 @@ while True:
         break
     else:
         print("Invalid input! Please enter a year between 2015 and 2022.")
-
 
 # Define API URL
 api_manager = ApiResourceManager()
@@ -205,89 +218,28 @@ if data:
                 'trip_distance_id', 'rate_code_id', 'pickup_location_id', 'dropoff_location_id',
                 'payment_type_id', 'fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount',
                 'total_amount']]
-    
+
+    #Dict to export plot
+    plot_data = {
+        "plot" : taxi_name_for_plt,
+        "data" : data_base_name,
+        "year" : year_input,
+    }
+
     # Plotting the distribution of trip distances
-    if not trip_distance_dim.empty and 'trip_distance' in trip_distance_dim:
-        # Plotting the distribution of trip distances
-        plt.figure(figsize=(10, 6))
-        plt.hist(trip_distance_dim['trip_distance'], bins=30, color='skyblue', edgecolor='black')
-        plt.title(f'Distribution of Trip Distances for {taxi_name_for_plt[data_base_name]} in {year_input}')
-        plt.xlabel('Trip Distance')
-        plt.ylabel('Frequency')
-        plt.grid(True)
-        plt.show()
-    else:
-        print(f"No data available to plot in Distribution of Trip Distances for {taxi_name_for_plt[data_base_name]} in {year_input}")
-
+    plot_output.trip_distance_plot(trip_distance_dim, plot_data)  
     # Plotting the distribution of passenger counts
-    passenger_count_series = passenger_count_dim['passenger_count'].value_counts()
-    if not passenger_count_series.empty:
-        plt.figure(figsize=(8, 6))
-        passenger_count_series.plot(kind='bar', color='salmon')
-        plt.title(f'Distribution of Passenger Counts for {taxi_name_for_plt[data_base_name]} in {year_input}')
-        plt.xlabel('Passenger Count')
-        plt.ylabel('Frequency')
-        plt.xticks(rotation=0)
-        plt.grid(axis='y')
-        plt.show()
-    else:
-        print(f"No data available to plot in Distribution of Passenger Counts for {taxi_name_for_plt[data_base_name]} in {year_input}")
-
+    plot_output.passenger_count_plot(passenger_count_dim, plot_data)
     # Plotting a pie chart for payment types
-    plt.figure(figsize=(10, 8))
-    payment_counts = payment_type_dim['payment_type_name'].value_counts()
-    colors = ['lightgreen', 'lightcoral', 'lightskyblue', 'lightyellow', 'lightpink', 'lightgrey']
-    payment_counts.plot(kind='pie', autopct='%1.1f%%', colors=colors, startangle=140, wedgeprops={'edgecolor': 'black'})
-    plt.title(f'Payment Types Distribution for {taxi_name_for_plt[data_base_name]} in {year_input}', fontsize=16)
-    plt.ylabel('')
-    plt.legend(payment_counts.index, loc="best", fontsize=10)
-    plt.tight_layout()
-    plt.show()
-
+    plot_output.payment_counts_plot(payment_type_dim, plot_data)
     # Plotting the distribution of fares
-    if not fact_table.empty and 'fare_amount' in fact_table:        
-        plt.figure(figsize=(10, 6))
-        plt.hist(fact_table['fare_amount'], bins=30, color='orange', edgecolor='black')
-        plt.title(f'Distribution of Fare Amounts for {taxi_name_for_plt[data_base_name]} in {year_input}')
-        plt.xlabel('Fare Amount')
-        plt.ylabel('Frequency')
-        plt.grid(True)
-        plt.show()
-    else:
-        print(f"No data available to plot in Distribution of Fare Amounts for {taxi_name_for_plt[data_base_name]} in {year_input}")
-
-    # Scatter plot for trip distances vs. total amounts
-    if not fact_table.empty and 'trip_distance_id' in fact_table:    
-        plt.figure(figsize=(10, 6))
-        plt.scatter(fact_table['trip_distance_id'], fact_table['total_amount'], color='green', alpha=0.5)
-        plt.title(f'Trip Distance vs. Total Amount for {taxi_name_for_plt[data_base_name]} in {year_input}')
-        plt.xlabel('Trip Distance')
-        plt.ylabel('Total Amount')
-        plt.grid(True)
-        plt.show()
-    else:
-        print(f"No data available to plot in Distribution of Fare Amounts for {taxi_name_for_plt[data_base_name]} in {year_input}")
-
-    # Visualize trip distance distribution
-    if not trip_distance_dim.empty and 'trip_distance' in trip_distance_dim:  
-        plt.hist(trip_distance_dim['trip_distance'], bins=20, color='skyblue', edgecolor='black')
-        plt.title(f'Trip Distance Distribution for {taxi_name_for_plt[data_base_name]} in {year_input}')
-        plt.xlabel('Trip Distance')
-        plt.ylabel('Frequency')
-        plt.grid(True)
-        plt.show()
-    else:
-        print(f"No data available to plot in Trip Distance Distribution for {taxi_name_for_plt[data_base_name]} in {year_input}")
-
+    plot_output.fare_amount_plot(fact_table, plot_data)
+    # Scatter plot for trip distances vs. total amounts    
+    plot_output.trip_Distance_vs_total_amount(fact_table, plot_data)
+    # Visualize trip distance distribution    
+    plot_output.distance_distribution(trip_distance_dim, plot_data)
     # Visualize fare amount distribution
-    if not fact_table.empty and 'fare_amount' in fact_table:      
-        plt.hist(fact_table['fare_amount'], bins=20, color='lightgreen', edgecolor='black')
-        plt.title(f'Fare Amount Distribution for {taxi_name_for_plt[data_base_name]} in {year_input}')
-        plt.xlabel('Fare Amount')
-        plt.ylabel('Frequency')
-        plt.grid(True)
-        plt.show()
-    else:
-        print(f"No data available to plot in Fare Amount Distribution for {taxi_name_for_plt[data_base_name]} in {year_input}")    
+    plot_output.amount_distribution(fact_table, plot_data)        
+  
 else:
     print("No data fetched from API. Exiting...")

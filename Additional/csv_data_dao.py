@@ -1,7 +1,24 @@
-"""_summary_
+"""
+CVS Data DAO (Data Access Object).
 
-    Returns:
-        _type_: _description_
+This class provides methods to fetch data from an API, save it to a CSV file,
+and export it to a SQL Server database.
+
+Attributes:
+- api_url: str, the URL of the API to fetch data from.
+
+Methods:
+- fetch_data_from_api(api_url): Fetches data from the specified API URL.
+- save_to_csv(data, filename): Saves data to a CSV file with the given filename.
+- export_to_sql_server(csv_filename, server, database, table): Exports data from a CSV file to a SQL Server database.
+
+Dependencies:
+- requests: Allows interaction with APIs.
+- pyodbc: Provides Python DB API 2.0 interface for ODBC.
+- csv: Provides functionality to read and write CSV files.
+
+Returns:
+None
         
 Author: Serhii Spitsyn
 """

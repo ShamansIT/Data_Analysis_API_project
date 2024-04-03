@@ -9,7 +9,7 @@ Attributes:
 
 Methods:
 - api_resource(base_name): Returns the API URL for the specified base name, which represents a combination
-                            of taxi group and year.
+of taxi group and year.
 
 Dependencies:
 - None
@@ -49,15 +49,13 @@ class ApiResourceManager:
             'GTTD2020': 'https://data.cityofnewyork.us/resource/pkmi-4kfn.csv',
             'GTTD2021': 'https://data.cityofnewyork.us/resource/djnb-wcxt.csv',
             'GTTD2022': 'https://data.cityofnewyork.us/resource/qp3b-zxtp.csv',
-
         }
 
-    def api_resource(self, base_name):
+    def api_resource(self, base_name, limit):
         # Check if the base_name exists in the base_urls dictionary
         if base_name in self.base_urls:
             # Construct the API URL using the base URL and the year
             api_url = self.base_urls[base_name]
-            return api_url
+            return api_url+'?$limit='+limit
         else:
             return "Base name not found"
-        

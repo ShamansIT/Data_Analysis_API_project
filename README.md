@@ -45,4 +45,5 @@ Taxi trip records for period 2015-2022 year, include fields capturing pick-up an
 
 ### Image Layout Example
 ***
-![Distribution of Trip Distances](\image\plot_layout_1.png "Distribution of Trip Distances")
+![Distribution of Trip Distances](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/plot_layout_1.png?raw=true)
+

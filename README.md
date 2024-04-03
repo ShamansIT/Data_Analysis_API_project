@@ -53,26 +53,26 @@ Taxi trip records for period 2009-2022 year for Yellow Taxi and for period 2015-
 | 1        | 2015-01-01 00:45:26   | 2015-01-01 00:53:20    | 1               | 2.1           | 1          | N                  | 162          | 263          | 1            | 8.2         | 0.5   | 0.5     | 2.37       | 0.0          | 0.0                   | 11.87        |                      |             |
 
 ### Relationshit schema
-!["Relationshit schema"](image\Relationshit_schema.png "Relationshit schema")
+!["Relationshit schema"](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/Relationshit_schema.png?raw=true)
 ## Image Layout Example
 
 ### Distribution of Trip Distances
-!["Distribution of Trip Distances"](image\plot_layout_1.png "Distribution of Trip Distances")
+!["Distribution of Trip Distances"](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/plot_layout_1.png?raw=true)
 
 ### Distribution of Passenger
-!["Distribution of Passenger"](image\plot_layout_2.png "Distribution of Passenger")
+!["Distribution of Passenger"](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/plot_layout_2.png?raw=true)
 
 ### Payment Types Distribution
-!["Payment Types Distribution"](image\plot_layout_3.png "Payment Types Distribution")
+!["Payment Types Distribution"](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/plot_layout_3.png?raw=true)
 
 ### Distribution of Fare Amounts
-!["Distribution of Fare Amounts"](image\plot_layout_4.png "Distribution of Fare Amounts")
+!["Distribution of Fare Amounts"](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/plot_layout_4.png?raw=true)
 
 ### Trip Distance vs. Total Amount
-!["Trip Distance vs. Total Amount"](image\plot_layout_5.png "Trip Distance vs. Total Amount")
+!["Trip Distance vs. Total Amount"](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/plot_layout_5.png?raw=true)
 
 ### Trip Distance Distribution
-!["Trip Distance Distribution"](image\plot_layout_6.png "Trip Distance Distribution")
+!["Trip Distance Distribution"](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/plot_layout_6.png?raw=true)
 
 ### Fare Amount Distribution
-!["Fare Amount Distribution"](image\plot_layout_7.png "Fare Amount Distribution")
+!["Fare Amount Distribution"](https://github.com/ShamansIT/Data_Analysis_API_project/blob/main/image/plot_layout_7.png?raw=true)

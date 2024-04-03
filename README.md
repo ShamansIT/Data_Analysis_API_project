@@ -8,6 +8,7 @@
 [Link for data API site](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 ### Descriptions
+***
 Taxi trip records for period 2015-2022 year, include fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts. The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC) by technology providers authorized under the Taxicab & Livery Passenger Enhancement Programs (TPEP/LPEP). The trip data was not created by the TLC, and TLC makes no representations as to the accuracy of these data.
 
 ### Data Dictionary
@@ -42,3 +43,6 @@ Taxi trip records for period 2015-2022 year, include fields capturing pick-up an
 | 1        | 2015-01-01 00:45:26   | 2015-01-01 00:53:20    | 1               | 2.1           | 1          | N                  | 162          | 263          | 1            | 8.2         | 0.5   | 0.5     | 2.37       | 0.0          | 0.0                   | 11.87        |                      |             |
 
 
+### Image Layout Example
+***
+![Distribution of Trip Distances](\image\plot_layout_1.png "Distribution of Trip Distances")
